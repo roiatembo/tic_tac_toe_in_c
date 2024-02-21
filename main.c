@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <time.h>
+#include <string.h>
 
 char board[3][3];
 const char PLAYER = 'X';
@@ -18,7 +19,11 @@ void printWinner(char);
 int main()
 {
     char winner = ' ';
-    resetBoard();
+    char response = ' ';
+    do {
+        winner = ' ';
+        response = ' ';
+           resetBoard();
     
     while(winner == ' ' && checkFreeSpaces != 0) {
         printBoard();
@@ -42,6 +47,13 @@ int main()
     }
     printBoard();
     printWinner(winner);
+    printf("\nWould you like to play again? (Y/N): ");
+    scanf("%c");
+    scanf("%c", &response);
+    response = toupper(response);
+    } while (response == 'Y');
+
+    printf("Thanks for playing");
     
     return 0;
 }
